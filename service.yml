@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: healthcare-service
+spec:
+  type: NodePort
+  ports:
+    - name: healthcare
+      protocol: TCP
+      port: 8083
+      targetport: 8083
+    - name: node-exporter
+      protocol: TCP
+      port: 9100
+      targetport: 9100
+    - name: c-advisor
+      protocol: TCP
+      port: 3000
+      targetport: 3000
+    selector:
+      app: healthcare
+      app: node-exporter
+      app: c-advisor
+
