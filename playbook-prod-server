@@ -1,0 +1,23 @@
+---
+- hosts: prod-server3
+  become: true
+  tasks:
+  - name: update apt
+    command: sudo apt-get update
+
+  - name: install docker
+    command: sudo apt install -y docker.io
+
+  - name: start docker service
+    command: sudo systemctl start docker
+
+  - name: deploy healthcare application
+    command: sudo docker rmi -f prasad996600/healthcare:1.0
+    command: sudo docker run -itd -p 8083:8083 --name healthcare prasad996600/healthcare:1.0
+
+  - name: deploy node-exporter
+    command: sudo docker run -itd -p 9100:9100 prom/node-exporter:latest
+
+  - name: deploy c-advisor
+    command: sudo docker run -itd -p 8085:8080 gcr.io/cadvisor/cadvisor:latest
+    
