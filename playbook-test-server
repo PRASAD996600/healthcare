@@ -1,0 +1,15 @@
+---
+- hosts: test-server3
+  become: true
+  tasks:
+  - name: update apt
+    command: sudo apt-get update
+
+  - name: install docker
+    command: sudo apt install -y docker.io
+
+  - name: start docker service
+    command: sudo systemctl start docker
+
+  - name: deploy healthcare application
+    command: sudo docker run -itd -p 8083:8083 --name banking prasad996600/banking:1.0
