@@ -12,4 +12,4 @@
     command: sudo systemctl start docker
 
   - name: deploy healthcare application
-    command: sudo docker run -itd -p 8083:8083 --name banking prasad996600/banking:1.0
+    command: sudo docker run -itd -p 8083:8083 --name banking1 prasad996600/banking:1.0
