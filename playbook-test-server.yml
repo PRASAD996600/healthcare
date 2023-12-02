@@ -3,7 +3,7 @@
   become: true
   tasks:
   - name: update apt
-    command: sudo apt-get update
+    command: apt-get update
 
   - name: install docker
     command: sudo apt install -y docker.io
